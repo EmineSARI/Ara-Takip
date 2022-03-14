@@ -1,0 +1,85 @@
+﻿@using AracSistem.Models
+@model List<Musteri>
+@{
+    ViewBag.Title = "addInvoices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section HeaderCss{
+    <link href="~/Content/css/Shared/_Layout.css" rel="stylesheet" />
+    <link href="~/Content/css/Home/invoices/addInvoices/addInvoices.css" rel="stylesheet" />
+    <style>
+        .btn {
+            border-radius: 30px !important;
+        }
+    </style>
+}
+
+<section>
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Ana Sayfa</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index","Invocies")">Faturalar</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Fatura Ekle</li>
+                            </ol>
+                        </nav>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <h2 class="mb-0" style="text-align:left;font-weight:bold">Müşteri Seç</h2>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" class="sort" data-sort="completion">#</th>
+                                    <th scope="col" class="sort" data-sort="name">Ad Ve Soyad</th>
+                                    <th scope="col" class="sort" data-sort="name">Telefon</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list ayrinti">
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            <a href="@Url.Action("newInvoiceSales", "Invocies", new { musteri_Id= item.Musteri_Id })" class="btn btn-info">
+                                            Seç
+                                            </a>
+                                        </td>
+                                        <td class="budget">
+                                            @item.Musteri_AdSoyad<span class="name mb-0 text-sm cssBold">&nbsp&nbsp₺</span>
+                                        </td>
+
+                                        <td class="budget">
+                                            <span>@item.Musteri_CepTelefon</span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
